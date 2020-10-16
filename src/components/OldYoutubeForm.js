@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-const YoutubeForm = () => {
+const OldYoutubeForm = () => {
   const initialValues = {
     name: "",
     email: "",
@@ -47,7 +47,9 @@ const YoutubeForm = () => {
           type="text"
           name="name"
           id="name"
-          {...formik.getFieldProps('name')}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          value={formik.values.name}
         />
         {formik.touched.name && formik.errors.name ? <div className="error">{formik.errors.name}</div> : null}
         </div>
@@ -58,8 +60,9 @@ const YoutubeForm = () => {
           type="email"
           name="email"
           id="email"
-          {...formik.getFieldProps('email')}
-
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          value={formik.values.email}
         />
         { formik.touched.email && formik.errors.email ? <div className="error">{formik.errors.email}</div> : null}
         </div>
@@ -70,8 +73,9 @@ const YoutubeForm = () => {
           type="text"
           name="channel"
           id="channel"
-          {...formik.getFieldProps('channel')}
-
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          value={formik.values.channel}
         />
         { formik.touched.channel && formik.errors.channel ? <div className="error">{formik.errors.channel}</div> : null}
         </div>
@@ -81,4 +85,4 @@ const YoutubeForm = () => {
   );
 };
 
-export default YoutubeForm;
+export default OldYoutubeForm;
