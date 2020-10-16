@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Formik } from "formik";
+import { Form, Formik,Field } from "formik";
 const YoutubeForm = () => {
   const initialValues = {
     name: "",
@@ -42,22 +42,22 @@ const YoutubeForm = () => {
       <Form>
           <div className='form-control'>
         <label htmlFor="name">Name</label>
-        <input
+        <Field
           type="text"
           name="name"
           id="name"
-          {...formik.getFieldProps('name')}
+       
         />
         {formik.touched.name && formik.errors.name ? <div className="error">{formik.errors.name}</div> : null}
         </div>
 
         <div className='form-control'>
         <label htmlFor="email">E-Mail</label>
-        <input
+        <Field
           type="email"
           name="email"
           id="email"
-          {...formik.getFieldProps('email')}
+     
 
         />
         { formik.touched.email && formik.errors.email ? <div className="error">{formik.errors.email}</div> : null}
@@ -65,11 +65,11 @@ const YoutubeForm = () => {
 
         <div className='form-control'>
         <label htmlFor="channel">Channel</label>
-        <input
+        <Field
           type="text"
           name="channel"
           id="channel"
-          {...formik.getFieldProps('channel')}
+          
 
         />
         { formik.touched.channel && formik.errors.channel ? <div className="error">{formik.errors.channel}</div> : null}
