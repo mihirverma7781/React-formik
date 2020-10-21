@@ -1,10 +1,11 @@
 import React from "react";
-import { Form, Formik,Field } from "formik";
+import { Form, Formik,Field,ErrorMessage } from "formik";
 const YoutubeForm = () => {
   const initialValues = {
     name: "",
     email: "",
     channel: "",
+    comment:"",
   };
   const onSubmit = (values) => {
     console.log(values);
@@ -26,13 +27,16 @@ const YoutubeForm = () => {
     if (!values.channel) {
       errors.channel = "Required";
     }
+    if (!values.comment) {
+      errors.comment = "Required";
+    }
 
     return errors;
   };
 
 
 
-  console.log('touched value',formik.touched);
+
 
   return (
     <Formik 
@@ -48,7 +52,7 @@ const YoutubeForm = () => {
           id="name"
        
         />
-        {formik.touched.name && formik.errors.name ? <div className="error">{formik.errors.name}</div> : null}
+       <text><ErrorMessage name="name"/></text> 
         </div>
 
         <div className='form-control'>
@@ -60,7 +64,7 @@ const YoutubeForm = () => {
      
 
         />
-        { formik.touched.email && formik.errors.email ? <div className="error">{formik.errors.email}</div> : null}
+        <text><ErrorMessage name='email'/></text>
         </div>
 
         <div className='form-control'>
@@ -69,10 +73,19 @@ const YoutubeForm = () => {
           type="text"
           name="channel"
           id="channel"
-          
+          />
+        <text><ErrorMessage name="channel"/></text>
+        </div>
 
-        />
-        { formik.touched.channel && formik.errors.channel ? <div className="error">{formik.errors.channel}</div> : null}
+        <div className="form-control">
+          <label htmlFor="comments">Comments</label>
+          <Field
+          as="textarea"
+          name="comment"
+          id="comment"
+          type="text"
+          />
+        <text><ErrorMessage name="comment"/></text>  
         </div>
         <button type="submit">Submit</button>
       </Form>
