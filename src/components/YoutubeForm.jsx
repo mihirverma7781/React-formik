@@ -6,6 +6,10 @@ const YoutubeForm = () => {
     email: "",
     channel: "",
     comment:"",
+    social: {
+      facebook:'',
+      twitter:''
+    }
   };
   const onSubmit = (values) => {
     console.log(values);
@@ -29,6 +33,12 @@ const YoutubeForm = () => {
     }
     if (!values.comment) {
       errors.comment = "Required";
+    }
+    if (!values.social.facebook) {
+      errors.social.facebook = "Required";
+    }
+    if (!values.social.twitter) {
+      errors.social.twitter = "Required";
     }
 
     return errors;
@@ -77,6 +87,27 @@ const YoutubeForm = () => {
         <text><ErrorMessage name="channel"/></text>
         </div>
 
+        <div className='form-control'>
+        <label htmlFor="Facebook">Facebook</label>
+        <Field
+          type="text"
+          name="social.facebook"
+          id="facebook"
+          />
+        <text><ErrorMessage name="social.facebook"/></text>
+        </div>
+
+        <div className='form-control'>
+        <label htmlFor="Twitter">Twitter</label>
+        <Field
+          type="text"
+          name="social.twitter"
+          id="twitter"
+          />
+        <text><ErrorMessage name="social.twitter"/></text>
+        </div>
+
+
         <div className="form-control">
           <label htmlFor="comments">Comments</label>
           <Field
@@ -87,6 +118,9 @@ const YoutubeForm = () => {
           />
         <text><ErrorMessage name="comment"/></text>  
         </div>
+
+
+
         <button type="submit">Submit</button>
       </Form>
     </Formik>
